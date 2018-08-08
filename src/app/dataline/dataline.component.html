@@ -1,0 +1,14 @@
+<div class="container">
+  <p-card title="{{article.title}}" subtitle="{{article.author}}" styleClass="ui-card-shadow">
+    <a href="{{article.url}}"> Source</a>
+    <p-header>
+      <img src="Card" src={{article.urlToImage}} height="200" width="200">
+    </p-header>
+    <div>{{article.description}}</div>
+    <p-footer>
+      <button pButton type="button" label="Save" icon="pi pi-check" style="margin-right: .25em"></button>
+      <button pButton type="button" label="Cancel" icon="pi pi-times" class="ui-button-secondary"></button>
+    </p-footer>
+  </p-card>
+
+</div>

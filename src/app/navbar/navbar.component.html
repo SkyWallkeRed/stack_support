@@ -1,0 +1,27 @@
+
+<div class="container">
+<div class="tabs">
+  <app-nav></app-nav>
+  <app-nav></app-nav>
+  <app-nav></app-nav>
+  <app-nav></app-nav>
+  <app-myfiles></app-myfiles>
+<!--<div class="logoContainer">-->
+  <img class="gitlogo" src="../../assets/logos/git.png" alt="">
+  <img class="jslogo" src="../../assets/logos/js.png" alt="">
+  <img class="twlogo" src="../../assets/logos/tw.png" alt="">
+<!--</div>-->
+
+</div>
+  <div class="header">
+
+    <!--<h1 class="appName"><span >Helper</span></h1>-->
+    <input [(ngModel)]="mdn" name="mdn" type="text" class="mdn input" placeholder="MDN" (keydown)="keyDownMdn($event)" >
+    <input [(ngModel)]="w3" name="w3"  type="text" class="w3school input" placeholder="w3school" (keydown)="keyDownw3($event)">
+    <input [(ngModel)]="google" name="google"  type="text" class="google input" placeholder="google" (keydown)="keyDowngoogle($event)">
+  </div>
+
+    <app-upload-pdf></app-upload-pdf>
+
+
+</div>

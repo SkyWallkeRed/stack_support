@@ -1,7 +1,21 @@
 <div class="container">
 
 
+<!-- <input type="text" placeholder="PDF src" [(ngModel)]="pdfSrc" name='pdfSrc'> -->
+<p-dropdown class="dropDown" [options]="PDF1" [(ngModel)]="selectedPDF1"></p-dropdown>
 
+
+
+<p-dialog header="Sheet" [(visible)]="display">
+
+        <pdf-viewer class="pdfViewer" [src]="pdfSrc" 
+        [render-text]="true"
+        style="display: block;"
+        ></pdf-viewer>
+   
+    </p-dialog>
+    
+    <button class="btn" type="text" (click)="showDialog()" pButton >Open</button>
 
 
 

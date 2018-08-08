@@ -1,0 +1,70 @@
+.container{
+  //width: 100%;
+  //border: 2px solid mediumspringgreen;
+  //min-height: 3em;
+  //position: fixed;
+  //text-align: center;
+
+}
+.tabs{
+  display: block;
+  background-color:rgb(242, 242, 242) ;
+  height: 3em;
+}
+.header{
+  width: 100%;
+  background-color: rgb(242, 242, 242);
+  font-size: 3em;
+}
+.appName{
+  padding: 1% ;
+}
+.input{
+  text-align: center;
+margin: 1%;
+  min-width: 15%;
+  min-height: 3em;
+  border-radius: 2px;
+  border: 0;
+  //background: none;
+  box-shadow: none;
+  //border-radius: 0px;
+}
+app-nav{
+  //padding: 1%;
+  //position: fixed;
+}
+logoContainer{
+
+}
+.gitlogo{
+  position: absolute;
+  right: 1%;
+  top: 2%;
+  max-height: 2em;
+  //padding-left: 96%;
+  //z-index: 30000;
+  cursor: pointer;
+  opacity: 0.8;
+
+}
+.twlogo{
+
+  position: absolute;
+  max-width: 3%;
+  right: 7%;
+  cursor: pointer;
+  top: 1%;
+  opacity: 0.8;
+
+}
+.jslogo{
+  right: 4%;
+  position: absolute;
+  top: 2%;
+  cursor: pointer;
+  max-height: 2em;
+  opacity: 0.8;
+
+
+}

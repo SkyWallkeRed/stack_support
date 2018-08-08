@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -10,14 +11,33 @@ import { AccordionModule } from 'primeng/accordion';     // accordion and accord
 import { MenuItem } from 'primeng/api';                 // api
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {SidebarModule} from 'primeng/sidebar';
-import { NavComponent } from './nav/nav.component';
-
+import { NavComponent } from './side-bar/nav.component';
+import { FormsModule } from '@angular/forms';
+import { PdfViewerModule } from '../../node_modules/ng2-pdf-viewer';
+import {DialogModule} from 'primeng/dialog';
+import {DropdownModule} from 'primeng/dropdown';
+import { NavbarComponent } from './navbar/navbar.component';
+import { UploadPDFComponent } from './upload-pdf/upload-pdf.component';
+import {FileUploadModule} from 'primeng/fileupload';
+import { HtmlPdfComponent } from './html-pdf/html-pdf.component';
+import {RouterModule} from '@angular/router';
+import { DatalineComponent } from './dataline/dataline.component'
+import {CardModule} from 'primeng/card';
+import { DatagridComponent } from './datagrid/datagrid.component';
+import { MyfilesComponent } from './myfiles/myfiles.component';
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     SheetComponent,
     NavComponent,
+    NavbarComponent,
+    UploadPDFComponent,
+    HtmlPdfComponent,
+    DatalineComponent,
+    DatagridComponent,
+    MyfilesComponent,
+
 
   ],
   imports: [
@@ -25,6 +45,14 @@ import { NavComponent } from './nav/nav.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     SidebarModule,
+    PdfViewerModule,
+    FormsModule,
+    DialogModule,
+    DropdownModule,
+    FileUploadModule,
+    AccordionModule,
+    CardModule,
+    HttpClientModule,
 
   ],
   providers: [],
