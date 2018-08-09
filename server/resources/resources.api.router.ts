@@ -20,5 +20,7 @@ module.exports = function (app, express) {
     });
   });
 
+
+
   app.use('/api/resources', resourcesApiRouter);
 };

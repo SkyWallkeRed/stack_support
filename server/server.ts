@@ -12,14 +12,27 @@ mongoose.connect('mongodb://localhost/test');
 // load mongoose models
 import * as monogooseModels from './repositories/models';
 
+
+let SitePDF = require('site-pdf');
+let generator = new SitePDF();
+
+
 // app.use(express.limit('20mb'));
 const app = express();
 loadMiddleWares(app);
 loadRoutes(app);
+app.get('/foo', async (req, res) => {
 
+  await generator.create('https://material.angular.io/components/datepicker/examples/', 'yeahhh.pdf')
+    .then(function () {
+      generator.destroy();
+    });
+
+  res.send('run');
+});
 // app.get('/api', function (req, res, next) {
-  // const article = new Article({name: ''});
-  // article.save().then(() => console.log('article was Saved'));   <<<<<<<<<<<<<<<<<<<<<<<<<<<< save articles to DB
+// const article = new Article({name: ''});
+// article.save().then(() => console.log('article was Saved'));   <<<<<<<<<<<<<<<<<<<<<<<<<<<< save articles to DB
 // });
 
 // Catch all other routes and return the index file
@@ -31,7 +44,7 @@ app.get('*', (req, res) => {
  */
 app.use(function (err, req, res, next) {
   console.error(err.stack);
-  res.status(500).send('Something broke!')
+  res.status(500).send('Something broke!');
 });
 
 const port = process.env.PORT || '8888';
@@ -44,7 +57,7 @@ const server = http.createServer(app);
  * Listen on provided port, on all network interfaces.
  */
 server.listen(port, (ok, err) => {
-  console.log(`API running on localhost:${port}`)
+  console.log(`API running on localhost:${port}`);
 });
 
 function loadMiddleWares(app) {
@@ -62,4 +75,5 @@ function loadRoutes(app) {
   // load articles routers
   require('./articles/articles.api.router')(app, express);
   require('./resources/resources.api.router')(app, express);
+  require('./resources/resources.url-pdf.api.router')(app, express);
 }
