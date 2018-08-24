@@ -1,4 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+import {Component, OnInit, Input} from '@angular/core';
+import {HelperService} from '../helper.service';
 
 @Component({
   selector: 'app-dataline',
@@ -7,10 +8,17 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class DatalineComponent implements OnInit {
   @Input() article;
-  constructor() { }
+
+  constructor(private helper: HelperService) {
+  }
 
   ngOnInit() {
     // console.log(this.article)
+  }
+
+  save(event) {
+    // console.log(event);
+    this.helper.urlToPdf(event.url, event.title);
   }
 
 }

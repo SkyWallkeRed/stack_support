@@ -1,50 +1,41 @@
-let SitePDF = require('site-pdf');
-let generator = new SitePDF();
+// import {query} from '';
+
+const puppeteer = require('puppeteer');
 
 module.exports = function (app, express) {
+  const resourcesApiRouter = express.Router();
 
-  try {
+  resourcesApiRouter.post('/url-pdf', async (req, res) => {
+    // const url =req.query.url;
+    let name = req.body.fileName;
+    const url = req.body.urlToConvert;
 
-    const urlToPdfApiRouter = express.Router();
+    let fileName = 1;
+    fileName++;
 
-    urlToPdfApiRouter.post('/url-pdf', (req, res) => {
-      console.log('laaaaaaaaa##########################################################');
-      if (!req) return res.status(400).send('err url-pdf .');
+    if (!name) {
+      name = fileName;
+    }
 
-      let sitePDF = new SitePDF({
-        cookie: {
-          'name': 'COOKIE_KEY_NAME',
-          'value': '100',
-          'domain': 'stackoverflow.com',
-          'path': '/',
-          'expires': (new Date()).getTime() + (1000 * 60 * 60)
-        },
-        userAgent: 'sitePDF',
-        // viewportSize: {width: 1280, height: 800},
-        paperSize: {
-          format: 'A4',
-          orientation: 'portrait',
-          margin: {left: '0.5cm', right: '0.5cm', top: '0.5cm', bottom: '0.5cm'}
-        },
-        phantomArgs: [['--ignore-ssl-errors=true', '--disk-cache=true'], {
-          // phantomPath: '/usr/local/bin/phantomjs',
-          logLevel: 'info',
-        }]
+    (async () => {
+      console.log('working');
+      const browser = await puppeteer.launch({
+        // headless: false
       });
 
+      const page = await browser.newPage();
+      await page.goto(url, {waitUntil: 'networkidle2'});
 
-      sitePDF.create('http://stackoverflow.com/', 'output.pdf');
+      await page.pdf({path: `server/files-converted/` + name + `.pdf`, format: 'A4'});
 
-      sitePDF.destroy();
+      await browser.close();
+      console.log('done');
 
-    });
+    })();
 
-    app.use('/api/resources', urlToPdfApiRouter);
+    res.send('url to PDF done ! ;) ');
+  });
 
-  } catch (e) {
-
-    console.log('url to pdf ', e);
-
-  }
+  app.use(resourcesApiRouter);
 
 };

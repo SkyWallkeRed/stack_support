@@ -26,4 +26,31 @@ export class HelperService {
     });
   }
 
+  urlToPdf(urlToConvert: string, name: string): void {
+    console.log( urlToConvert);
+    console.log( name);
+    this.http.post('http://localhost:8888/url-pdf',
+      {
+        'fileName': name,
+        'urlToConvert': urlToConvert,
+        'courseListIcon': ' none ',
+        'description': 'url to be converted to pdf',
+        'iconUrl': '<:)>',
+        'longDescription': 'none really just url to pdf',
+        // 'url': 'http://localhost:8888/api/url-pdf'
+      })
+      .subscribe(
+        (val) => {
+          console.log('POST call successful value returned in body',
+            val);
+        },
+        response => {
+          console.log('POST call in error', response);
+        },
+        () => {
+          console.log('The POST observable is now completed.');
+        });
+  }
 }
+
+

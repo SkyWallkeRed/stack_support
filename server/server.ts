@@ -3,6 +3,9 @@ const express = require('express');
 const path = require('path');
 const http = require('http');
 var request = require('request');
+var cors = require('cors')
+
+
 
 const bodyParser = require('body-parser');
 const fileUpload = require('express-fileupload');
@@ -19,17 +22,10 @@ let generator = new SitePDF();
 
 // app.use(express.limit('20mb'));
 const app = express();
+app.use(cors());
 loadMiddleWares(app);
 loadRoutes(app);
-app.get('/foo', async (req, res) => {
 
-  await generator.create('https://material.angular.io/components/datepicker/examples/', 'yeahhh.pdf')
-    .then(function () {
-      generator.destroy();
-    });
-
-  res.send('run');
-});
 // app.get('/api', function (req, res, next) {
 // const article = new Article({name: ''});
 // article.save().then(() => console.log('article was Saved'));   <<<<<<<<<<<<<<<<<<<<<<<<<<<< save articles to DB
